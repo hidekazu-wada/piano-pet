@@ -14,6 +14,30 @@
   font-weight: bold;
 }
 
+.predefined-practices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.predefined-practice-btn {
+  padding: 0.5rem;
+  background-color: #3a7e9e;
+  color: white;
+  border: 1px solid #2a6e8e;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.predefined-practice-btn:hover {
+  background-color: #2a6e8e;
+  transform: translateY(-1px);
+}
+
 .start-button {
   margin-top: 1rem;
   width: 100%;

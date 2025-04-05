@@ -10,6 +10,18 @@ const PracticeForm: React.FC<PracticeFormProps> = ({ onStartPractice }) => {
   const [title, setTitle] = useState('')
   const [targetMinutes, setTargetMinutes] = useState(10)
   
+  const predefinedPractices = [
+    'ハノン',
+    '老いぼれ猫の夢',
+    'メヌエット',
+    'アリエッタ',
+    'ウィンナーワルツ'
+  ]
+  
+  const handlePredefinedSelection = (practice: string) => {
+    setTitle(practice)
+  }
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
@@ -38,6 +50,19 @@ const PracticeForm: React.FC<PracticeFormProps> = ({ onStartPractice }) => {
             placeholder="例: バイエル25番"
             required
           />
+        </div>
+        
+        <div className="predefined-practices">
+          {predefinedPractices.map((practice, index) => (
+            <button
+              type="button"
+              key={index}
+              onClick={() => handlePredefinedSelection(practice)}
+              className="predefined-practice-btn"
+            >
+              {practice}
+            </button>
+          ))}
         </div>
         
         <div className="form-group">
