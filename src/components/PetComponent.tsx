@@ -80,7 +80,7 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
     sparkles: level >= 12,                // キラキラエフェクト（レベル12から）
     aura: level >= 13,                    // オーラ（レベル13から）
     halo: level >= 14,                    // 天使の輪（レベル14から）
-    jetpack: level >= 15,                 // ジェットパック（レベル15から）
+    rocketPack: level >= 15,              // ロケットパック（レベル15から）
     rainbow: level >= 16,                 // 虹色エフェクト（レベル16から）
     staff: level >= 17,                   // 指揮棒（レベル17から）
     gradientBody: level >= 18,            // グラデーションボディ（レベル18から）
@@ -169,8 +169,8 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
         )}
         
         {/* アイテム系要素（ペットの後ろ） */}
-        {/* ジェットパック */}
-        {petFeatures.jetpack && (
+        {/* ロケットパック */}
+        {petFeatures.rocketPack && (
           <div className="rocket-pack">
             <div className="rocket-body"></div>
             <div className="rocket-flame"></div>
