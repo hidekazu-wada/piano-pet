@@ -20,9 +20,10 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
   const showBow = level >= 5
   
   // レベルアップの進捗計算
-  const minutesForNextLevel = (level) * 60
-  const minutesInCurrentLevel = totalMinutes - ((level - 1) * 60)
-  const progressPercent = (minutesInCurrentLevel / 60) * 100
+  const minutesPerLevel = 60 // 1レベルに必要な練習時間（分）
+  const minutesInCurrentLevel = totalMinutes - ((level - 1) * minutesPerLevel)
+  const progressPercent = Math.min((minutesInCurrentLevel / minutesPerLevel) * 100, 100)
+  const remainingMinutes = minutesPerLevel - minutesInCurrentLevel
 
   return (
     <div className="pet-wrapper">
@@ -61,7 +62,7 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
       <div className="level-progress-container">
         <div className="level-progress-bar" style={{ width: `${progressPercent}%` }}></div>
         <span className="level-progress-text">
-          次のレベルまで: {minutesForNextLevel - minutesInCurrentLevel}分
+          次のレベルまで: あと{remainingMinutes}分
         </span>
       </div>
       
