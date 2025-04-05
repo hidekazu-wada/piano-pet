@@ -209,3 +209,35 @@ select, input {
 }
 
 /* 単一の色スキームを使用するためメディアクエリ削除 */
+
+/* レベルアップメッセージ */
+.level-up-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+  animation: fadeInOut 5s ease-in-out forwards;
+}
+
+.level-up-message h2 {
+  color: #ff6b6b;
+  margin-bottom: 10px;
+}
+
+.level-up-message p {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -40%); }
+  10% { opacity: 1; transform: translate(-50%, -50%); }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}

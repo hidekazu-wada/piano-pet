@@ -3,6 +3,7 @@ import PetComponent from './components/PetComponent'
 import PracticeForm from './components/PracticeForm'
 import PracticeComplete from './components/PracticeComplete'
 import ImportExportModal from './components/ImportExportModal'
+import Confetti from 'react-confetti'
 import './App.css'
 
 type PracticeStatus = 'planning' | 'practicing' | 'completed'
@@ -42,11 +43,31 @@ function App() {
     targetMinutes: 10
   })
   const [showImportExport, setShowImportExport] = useState<boolean>(false)
+  const [showConfetti, setShowConfetti] = useState<boolean>(false)
+  const [showLevelUpMessage, setShowLevelUpMessage] = useState<boolean>(false)
+  const [newLevel, setNewLevel] = useState<number>(1)
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  })
 
   const startPractice = (session: PracticeSession) => {
     setCurrentSession(session)
     setPracticeStatus('practicing')
   }
+
+  // ウィンドウサイズの監視
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const completePractice = (actualMinutes: number) => {
     // Update points and total practice time
@@ -56,9 +77,20 @@ function App() {
     
     // Check if level up is needed (every 60 minutes of practice)
     const newTotalMinutes = totalPracticeMinutes + actualMinutes
-    const newLevel = Math.floor(newTotalMinutes / 60) + 1
-    if (newLevel > level) {
-      setLevel(newLevel)
+    const calculatedNewLevel = Math.floor(newTotalMinutes / 60) + 1
+    if (calculatedNewLevel > level) {
+      setLevel(calculatedNewLevel)
+      setNewLevel(calculatedNewLevel)
+      
+      // レベルアップ時に紙吹雪エフェクトとメッセージを表示
+      setShowConfetti(true)
+      setShowLevelUpMessage(true)
+      
+      // 5秒後に紙吹雪エフェクトとメッセージを非表示にする
+      setTimeout(() => {
+        setShowConfetti(false)
+        setShowLevelUpMessage(false)
+      }, 5000)
     }
     
     // Update current session and status
@@ -130,6 +162,26 @@ function App() {
 
   return (
     <div className="container">
+      {/* レベルアップ時の紙吹雪エフェクト */}
+      {showConfetti && (
+        <Confetti 
+          width={windowSize.width}
+          height={windowSize.height}
+          recycle={false}
+          numberOfPieces={500}
+          gravity={0.15}
+        />
+      )}
+      
+      {/* レベルアップメッセージ */}
+      {showLevelUpMessage && (
+        <div className="level-up-message">
+          <h2>レベルアップ！</h2>
+          <p>おめでとう！レベル{newLevel}になりました！</p>
+          <p>これからも一緒に頑張りましょう♪</p>
+        </div>
+      )}
+      
       <h1>ピアノペット</h1>
       
       <div className="pet-container">
