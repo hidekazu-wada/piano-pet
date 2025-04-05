@@ -143,8 +143,20 @@ function App() {
       </div>
       
       <div className="game-controls">
-        <button className="import-export-button" onClick={() => setShowImportExport(true)}>データの保存/復元</button>
-        <button className="reset-button" onClick={resetGame}>最初からやり直す</button>
+        <button 
+          className="import-export-button" 
+          onClick={() => setShowImportExport(true)}
+          style={{ minWidth: '120px' }}
+        >
+          データの保存/復元
+        </button>
+        <button 
+          className="reset-button" 
+          onClick={resetGame}
+          style={{ minWidth: '120px' }}
+        >
+          最初からやり直す
+        </button>
       </div>
       
       {showImportExport && (
