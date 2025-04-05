@@ -68,6 +68,13 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
   // レベルに応じて特徴を追加
   const showSpots = level >= 3
   const showBow = level >= 5
+  const showGlasses = level >= 2
+  const showCrown = level >= 4
+  const showWings = level >= 6
+  
+  // レベルに応じて表情を変化
+  const mouthStyle = level >= 3 ? 'happy' : 'normal'
+  const eyeStyle = level >= 4 ? 'star' : 'normal'
   
   // レベルアップの進捗計算
   const minutesPerLevel = 60 // 1レベルに必要な練習時間（分）
@@ -86,14 +93,32 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
           backgroundColor: petColor 
         }}
       >
-        {/* 目 */}
+        {/* レベル6以上で表示される羽 */}
+        {showWings && (
+          <div className="wings">
+            <div className="wing left"></div>
+            <div className="wing right"></div>
+          </div>
+        )}
+      
+        {/* レベル2以上で表示される眼鏡 */}
+        {showGlasses && (
+          <div className="glasses">
+            <div className="glasses-bridge"></div>
+          </div>
+        )}
+        
+        {/* レベル4以上で表示される王冠 */}
+        {showCrown && <div className="crown"></div>}
+        
+        {/* 目（レベル4以上で星型に変化） */}
         <div className="eyes">
-          <div className="eye"></div>
-          <div className="eye"></div>
+          <div className={`eye ${eyeStyle}`}></div>
+          <div className={`eye ${eyeStyle}`}></div>
         </div>
         
-        {/* 口 */}
-        <div className="mouth"></div>
+        {/* 口（レベル3以上で笑顔に変化） */}
+        <div className={`mouth ${mouthStyle}`}></div>
         
         {/* レベル3以上で表示される模様 */}
         {showSpots && (
@@ -124,19 +149,22 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
       
       <div className="pet-dialog">
         {level === 1 && (
-          <p>よろしくね♪ 一緒にピアノ頂張ろう！</p>
+          <p>よろしくね♪ 一緒にピアノ頑張ろう！</p>
         )}
         {level === 2 && (
-          <p>あなたの練習で大きくなってるよ！</p>
+          <p>お！眼鏡をかけて勉強家になったよ！続けてね！</p>
         )}
         {level === 3 && (
-          <p>模様が出てきたね！続けて頂張ろう♪</p>
+          <p>模様と笑顔が出てきたね！どんどん練習しよう♪</p>
         )}
         {level === 4 && (
-          <p>もう少しで特別なものが着くよ！</p>
+          <p>王冠と星の目を手に入れたよ！ピアノの王様だぞ！</p>
         )}
-        {level >= 5 && (
-          <p>素敵なリボンが付いたよ！ありがとう！</p>
+        {level === 5 && (
+          <p>可愛いリボンが付いたよ！お洒落になってきた♪</p>
+        )}
+        {level >= 6 && (
+          <p>羽が生えて飛べるようになったよ！天才ピアニスト！</p>
         )}
       </div>
     </div>
