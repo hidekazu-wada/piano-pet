@@ -88,14 +88,4 @@ select, input {
   text-align: center;
 }
 
-@media (prefers-color-scheme: light) {
-  .container {
-    background-color: #f8f9fa;
-  }
-  button {
-    background-color: #4472c4;
-  }
-  button:hover {
-    background-color: #345aa5;
-  }
-}
+/* 単一の色スキームを使用するためメディアクエリ削除 */
