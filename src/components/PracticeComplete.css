@@ -1,0 +1,31 @@
+.practice-complete-container {
+  text-align: center;
+}
+
+.practice-summary {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.practice-summary p {
+  margin: 0.5rem 0;
+}
+
+.earned-points {
+  color: #4caf50;
+  font-size: 1.1rem;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.practice-again-button {
+  background-color: #4472c4;
+}
