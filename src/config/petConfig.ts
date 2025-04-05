@@ -20,12 +20,12 @@ export const petLevels: PetLevelConfig[] = [
   {
     level: 2,
     imagePath: '/images/pets/pet-level-2.png',
-    message: 'お！眼鏡をかけて勉強家になったよ！続けてね！'
+    message: 'あ！帽子をゲットしたよ！ありがとう！'
   },
   {
     level: 3,
     imagePath: '/images/pets/pet-level-3.png',
-    message: '模様と笑顔が出てきたね！どんどん練習しよう♪'
+    message: 'わーい！帽子にポンポンがついたー！どんどん練習しよう♪'
   },
   {
     level: 4,
