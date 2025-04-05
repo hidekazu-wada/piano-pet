@@ -42,7 +42,8 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
           className="pet-image"
           onError={(e) => {
             // 画像読み込みエラー時のフォールバック処理
-            e.currentTarget.src = '/images/pets/pet-default.png';
+            const basePath = import.meta.env.BASE_URL || '/';
+            e.currentTarget.src = `${basePath}images/pets/pet-default.png`;
           }}
         />
         <div className="pet-click-hint">クリックで拡大</div>
@@ -62,7 +63,8 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
                 alt={`レベル${level}のペット`}
                 className="pet-modal-image"
                 onError={(e) => {
-                  e.currentTarget.src = '/images/pets/pet-default.png';
+                  const basePath = import.meta.env.BASE_URL || '/';
+                  e.currentTarget.src = `${basePath}images/pets/pet-default.png`;
                 }}
               />
               <div className="pet-modal-stats">

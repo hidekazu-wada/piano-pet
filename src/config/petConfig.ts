@@ -10,31 +10,34 @@ export interface PetLevelConfig {
   message: string;
 }
 
+// ベースパスを設定（GitHub Pagesでの展開を考慮）
+const basePath = import.meta.env.BASE_URL || '/';
+
 // レベルごとの設定を配列で管理
 export const petLevels: PetLevelConfig[] = [
   {
     level: 1,
-    imagePath: '/images/pets/pet-level-1.png',
+    imagePath: `${basePath}images/pets/pet-level-1.png`,
     message: 'よろしくね♪ 一緒にピアノ頑張ろう！'
   },
   {
     level: 2,
-    imagePath: '/images/pets/pet-level-2.png',
+    imagePath: `${basePath}images/pets/pet-level-2.png`,
     message: 'あ！帽子をゲットしたよ！ありがとう！'
   },
   {
     level: 3,
-    imagePath: '/images/pets/pet-level-3.png',
+    imagePath: `${basePath}images/pets/pet-level-3.png`,
     message: 'わーい！帽子にポンポンがついたー！どんどん練習しよう♪'
   },
   {
     level: 4,
-    imagePath: '/images/pets/pet-level-4.png',
+    imagePath: `${basePath}images/pets/pet-level-4.png`,
     message: '王冠を手に入れたよ！ピアノの王様だぞ！'
   },
   {
     level: 5,
-    imagePath: '/images/pets/pet-level-5.png',
+    imagePath: `${basePath}images/pets/pet-level-5.png`,
     message: '可愛いリボンが付いたよ！お洒落になってきた♪'
   },
   // 必要なだけレベル設定を追加する
