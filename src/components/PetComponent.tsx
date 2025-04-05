@@ -169,10 +169,11 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
         )}
         
         {/* アイテム系要素（ペットの後ろ） */}
+        {/* ジェットパック */}
         {petFeatures.jetpack && (
-          <div className="jetpack">
-            <div className="jetpack-body"></div>
-            <div className="jetpack-flame"></div>
+          <div className="rocket-pack">
+            <div className="rocket-body"></div>
+            <div className="rocket-flame"></div>
           </div>
         )}
         
@@ -303,7 +304,7 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
         {level === 12 && <p>キラキラエフェクトが出るようになったよ！眩しい〜！</p>}
         {level === 13 && <p>オーラが出てるね！練習の成果が表れてる証拠だよ！</p>}
         {level === 14 && <p>天使の輪が浮かんでる！神聖な演奏ができるね！</p>}
-        {level === 15 && <p>ジェットパック装備！演奏が超高速になった！</p>}
+        {level === 15 && <p>ロケットパック装備！演奏が超高速になった！</p>}
         {level === 16 && <p>虹色に輝きだした！七色の音階みたいだね！</p>}
         {level === 17 && <p>指揮棒を手に入れた！オーケストラも指揮できるよ！</p>}
         {level === 18 && <p>体がグラデーションに！鍵盤のようなグラデーションだね！</p>}
