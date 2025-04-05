@@ -45,6 +45,23 @@
   font-weight: bold;
 }
 
+.game-controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.reset-button {
+  background-color: #f44336;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+.reset-button:hover {
+  background-color: #d32f2f;
+}
+
 .practice-container {
   width: 100%;
   margin: 1rem 0;

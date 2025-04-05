@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PetComponent from './components/PetComponent'
 import PracticeForm from './components/PracticeForm'
 import PracticeComplete from './components/PracticeComplete'
@@ -12,10 +12,29 @@ export interface PracticeSession {
   actualMinutes?: number
 }
 
+interface GameState {
+  level: number;
+  points: number;
+  totalPracticeMinutes: number;
+}
+
 function App() {
-  const [level, setLevel] = useState<number>(1)
-  const [points, setPoints] = useState<number>(0)
-  const [totalPracticeMinutes, setTotalPracticeMinutes] = useState<number>(0)
+  // LocalStorageからゲーム状態を読み込む
+  const loadGameState = (): GameState => {
+    const savedState = localStorage.getItem('pianoPetGameState');
+    if (savedState) {
+      return JSON.parse(savedState);
+    }
+    return {
+      level: 1,
+      points: 0,
+      totalPracticeMinutes: 0
+    };
+  };
+
+  const [level, setLevel] = useState<number>(() => loadGameState().level)
+  const [points, setPoints] = useState<number>(() => loadGameState().points)
+  const [totalPracticeMinutes, setTotalPracticeMinutes] = useState<number>(() => loadGameState().totalPracticeMinutes)
   const [practiceStatus, setPracticeStatus] = useState<PracticeStatus>('planning')
   const [currentSession, setCurrentSession] = useState<PracticeSession>({ 
     title: '',
@@ -45,9 +64,35 @@ function App() {
     setPracticeStatus('completed')
   }
 
+  // ゲーム状態を保存する関数
+  const saveGameState = () => {
+    const gameState: GameState = {
+      level,
+      points,
+      totalPracticeMinutes
+    };
+    localStorage.setItem('pianoPetGameState', JSON.stringify(gameState));
+  };
+
+  // 状態が変更されたら自動保存
+  useEffect(() => {
+    saveGameState();
+  }, [level, points, totalPracticeMinutes]);
+
   const resetSession = () => {
     setCurrentSession({ title: '', targetMinutes: 10 })
     setPracticeStatus('planning')
+  }
+  
+  // ゲームをリセットする関数
+  const resetGame = () => {
+    if (window.confirm('本当にゲームをリセットしますか？すべての進行状況が失われます。')) {
+      setLevel(1);
+      setPoints(0);
+      setTotalPracticeMinutes(0);
+      resetSession();
+      localStorage.removeItem('pianoPetGameState');
+    }
   }
 
   return (
@@ -62,6 +107,10 @@ function App() {
         <p>レベル: {level}</p>
         <p>ポイント: {points}</p>
         <p>累計練習時間: {totalPracticeMinutes} 分</p>
+      </div>
+      
+      <div className="game-controls">
+        <button className="reset-button" onClick={resetGame}>最初からやり直す</button>
       </div>
 
       <div className="practice-container">
