@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import PetComponent from './components/PetComponent'
 import PracticeForm from './components/PracticeForm'
 import PracticeComplete from './components/PracticeComplete'
+import ImportExportModal from './components/ImportExportModal'
 import './App.css'
 
 type PracticeStatus = 'planning' | 'practicing' | 'completed'
@@ -40,6 +41,7 @@ function App() {
     title: '',
     targetMinutes: 10
   })
+  const [showImportExport, setShowImportExport] = useState<boolean>(false)
 
   const startPractice = (session: PracticeSession) => {
     setCurrentSession(session)
@@ -95,6 +97,37 @@ function App() {
     }
   }
 
+  // データをエクスポートする関数
+  const exportGameData = (): string => {
+    const gameState: GameState = {
+      level,
+      points,
+      totalPracticeMinutes
+    };
+    return btoa(JSON.stringify(gameState)); // Base64エンコード
+  }
+
+  // データをインポートする関数
+  const importGameData = (dataString: string) => {
+    try {
+      const decodedData = atob(dataString); // Base64デコード
+      const gameState: GameState = JSON.parse(decodedData);
+      
+      setLevel(gameState.level);
+      setPoints(gameState.points);
+      setTotalPracticeMinutes(gameState.totalPracticeMinutes);
+      
+      // LocalStorageにも保存
+      localStorage.setItem('pianoPetGameState', JSON.stringify(gameState));
+      
+      setShowImportExport(false); // モーダルを閉じる
+      alert('データを正常にインポートしました！');
+    } catch (error) {
+      alert('データの形式が正しくありません。正確なエクスポートコードを入力してください。');
+      console.error('Import error:', error);
+    }
+  }
+
   return (
     <div className="container">
       <h1>ピアノペット</h1>
@@ -110,8 +143,17 @@ function App() {
       </div>
       
       <div className="game-controls">
+        <button className="import-export-button" onClick={() => setShowImportExport(true)}>データの保存/復元</button>
         <button className="reset-button" onClick={resetGame}>最初からやり直す</button>
       </div>
+      
+      {showImportExport && (
+        <ImportExportModal 
+          onClose={() => setShowImportExport(false)}
+          exportData={exportGameData()}
+          onImport={importGameData}
+        />
+      )}
 
       <div className="practice-container">
         {practiceStatus === 'planning' && (
