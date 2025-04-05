@@ -19,6 +19,11 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
   const showSpots = level >= 3
   const showBow = level >= 5
   
+  // レベルアップの進捗計算
+  const minutesForNextLevel = (level) * 60
+  const minutesInCurrentLevel = totalMinutes - ((level - 1) * 60)
+  const progressPercent = (minutesInCurrentLevel / 60) * 100
+
   return (
     <div className="pet-wrapper">
       {/* 基本のペットの形 */}
@@ -50,6 +55,14 @@ const PetComponent: React.FC<PetComponentProps> = ({ level, points, totalMinutes
         
         {/* レベル5以上で表示されるリボン */}
         {showBow && <div className="bow"></div>}
+      </div>
+      
+      {/* レベルアップ進捗バー */}
+      <div className="level-progress-container">
+        <div className="level-progress-bar" style={{ width: `${progressPercent}%` }}></div>
+        <span className="level-progress-text">
+          次のレベルまで: {minutesForNextLevel - minutesInCurrentLevel}分
+        </span>
       </div>
       
       <div className="pet-dialog">
