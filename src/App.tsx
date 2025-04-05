@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import PetComponent from './components/PetComponent'
 import PracticeForm from './components/PracticeForm'
 import PracticeComplete from './components/PracticeComplete'

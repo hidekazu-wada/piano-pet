@@ -8,7 +8,7 @@ interface PracticeCompleteProps {
 }
 
 const PracticeComplete: React.FC<PracticeCompleteProps> = ({ session, onPracticeAgain }) => {
-  const [actualMinutes, setActualMinutes] = useState<number>(session.actualMinutes || session.targetMinutes)
+  const [actualMinutes] = useState<number>(session.actualMinutes || session.targetMinutes)
   
   // 練習が完了したときのポイント計算
   const earnedPoints = actualMinutes
