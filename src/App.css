@@ -45,43 +45,67 @@
   font-weight: bold;
 }
 
-.game-controls {
-  width: 100%;
+.app-header {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1rem 0;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  position: relative;
 }
 
-.gallery-button {
-  background-color: #2196f3;
+.menu-container {
+  position: relative;
+}
+
+.menu-button {
+  background-color: #4472c4;
   font-size: 0.8rem;
   padding: 0.5rem 1rem;
 }
 
-.gallery-button:hover {
-  background-color: #0b7dda;
+.menu-button:hover {
+  background-color: #345aa5;
 }
 
-.import-export-button {
-  background-color: #4caf50;
-  font-size: 0.8rem;
-  padding: 0.5rem 1rem;
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
 }
 
-.import-export-button:hover {
-  background-color: #388e3c;
+.menu-dropdown button {
+  background-color: transparent;
+  color: #333;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+  font-weight: normal;
 }
 
-.reset-button {
-  background-color: #f44336;
-  font-size: 0.8rem;
-  padding: 0.5rem 1rem;
+.menu-dropdown button:hover {
+  background-color: #f0f0f0;
 }
 
-.reset-button:hover {
-  background-color: #d32f2f;
+.menu-dropdown button:nth-child(1):hover {
+  color: #2196f3;
+}
+
+.menu-dropdown button:nth-child(2):hover {
+  color: #4caf50;
+}
+
+.menu-dropdown button:nth-child(3):hover {
+  color: #f44336;
 }
 
 .modal-overlay {

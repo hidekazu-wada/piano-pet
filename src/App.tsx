@@ -47,6 +47,7 @@ function App() {
   const [showPetGallery, setShowPetGallery] = useState<boolean>(false)
   const [showConfetti, setShowConfetti] = useState<boolean>(false)
   const [showLevelUpMessage, setShowLevelUpMessage] = useState<boolean>(false)
+  const [showMenu, setShowMenu] = useState<boolean>(false)
   const [newLevel, setNewLevel] = useState<number>(1)
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -70,6 +71,21 @@ function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // メニューがクリックされた時にドロップダウンの外側をクリックしたら閉じる
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (showMenu && event.target instanceof Element) {
+        const menuContainer = document.querySelector('.menu-container');
+        if (menuContainer && !menuContainer.contains(event.target)) {
+          setShowMenu(false);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+    return () => document.removeEventListener('click', handleOutsideClick);
+  }, [showMenu]);
 
   const completePractice = (actualMinutes: number) => {
     // Update points and total practice time
@@ -184,7 +200,39 @@ function App() {
         </div>
       )}
       
-      <h1>ピアノペット</h1>
+      <div className="app-header">
+        <h1>ピアノペット</h1>
+        <div className="menu-container">
+          <button 
+            className="menu-button" 
+            onClick={() => setShowMenu(!showMenu)}
+          >
+            メニュー
+          </button>
+          {showMenu && (
+            <div className="menu-dropdown">
+              <button onClick={() => {
+                setShowPetGallery(true);
+                setShowMenu(false);
+              }}>
+                ペットギャラリー
+              </button>
+              <button onClick={() => {
+                setShowImportExport(true);
+                setShowMenu(false);
+              }}>
+                データの保存/復元
+              </button>
+              <button onClick={() => {
+                resetGame();
+                setShowMenu(false);
+              }}>
+                最初からやり直す
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
       
       <div className="pet-container">
         <PetComponent level={level} points={points} totalMinutes={totalPracticeMinutes} />
@@ -196,29 +244,6 @@ function App() {
         <p>累計練習時間: {totalPracticeMinutes} 分</p>
       </div>
       
-      <div className="game-controls">
-        <button 
-          className="gallery-button" 
-          onClick={() => setShowPetGallery(true)}
-          style={{ minWidth: '120px' }}
-        >
-          ペットギャラリー
-        </button>
-        <button 
-          className="import-export-button" 
-          onClick={() => setShowImportExport(true)}
-          style={{ minWidth: '120px' }}
-        >
-          データの保存/復元
-        </button>
-        <button 
-          className="reset-button" 
-          onClick={resetGame}
-          style={{ minWidth: '120px' }}
-        >
-          最初からやり直す
-        </button>
-      </div>
       
       {showImportExport && (
         <ImportExportModal 
