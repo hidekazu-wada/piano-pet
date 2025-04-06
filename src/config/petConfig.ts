@@ -30,7 +30,7 @@ export const petLevels: PetLevelConfig[] = [
     imagePath: `${basePath}images/pets/pet-level-3.png`,
     message: 'わーい！帽子にポンポンがついたー！どんどん練習しよう♪'
   },
-  // レベル5は対応する画像がまだ追加されていないため、レベル3の画像を使用
+  // レベル4と5は対応する画像がまだ追加されていないため、レベル3の画像を使用
   {
     level: 4,
     imagePath: `${basePath}images/pets/pet-level-4.png`,
