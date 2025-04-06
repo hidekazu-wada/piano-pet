@@ -17,7 +17,7 @@ const PetGallery: React.FC<PetGalleryProps> = ({ currentLevel, onClose }) => {
           <p>これまでの成長の記録</p>
         </div>
         <div className="pet-gallery-items">
-          {petLevels.map((pet, index) => {
+          {petLevels.map((pet) => {
             const isUnlocked = currentLevel >= pet.level;
             return (
               <div 
