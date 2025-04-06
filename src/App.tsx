@@ -3,6 +3,7 @@ import PetComponent from './components/PetComponent'
 import PracticeForm from './components/PracticeForm'
 import PracticeComplete from './components/PracticeComplete'
 import ImportExportModal from './components/ImportExportModal'
+import PetGallery from './components/PetGallery'
 import Confetti from 'react-confetti'
 import './App.css'
 
@@ -43,6 +44,7 @@ function App() {
     targetMinutes: 10
   })
   const [showImportExport, setShowImportExport] = useState<boolean>(false)
+  const [showPetGallery, setShowPetGallery] = useState<boolean>(false)
   const [showConfetti, setShowConfetti] = useState<boolean>(false)
   const [showLevelUpMessage, setShowLevelUpMessage] = useState<boolean>(false)
   const [newLevel, setNewLevel] = useState<number>(1)
@@ -196,6 +198,13 @@ function App() {
       
       <div className="game-controls">
         <button 
+          className="gallery-button" 
+          onClick={() => setShowPetGallery(true)}
+          style={{ minWidth: '120px' }}
+        >
+          ペットギャラリー
+        </button>
+        <button 
           className="import-export-button" 
           onClick={() => setShowImportExport(true)}
           style={{ minWidth: '120px' }}
@@ -216,6 +225,13 @@ function App() {
           onClose={() => setShowImportExport(false)}
           exportData={exportGameData()}
           onImport={importGameData}
+        />
+      )}
+      
+      {showPetGallery && (
+        <PetGallery 
+          currentLevel={level}
+          onClose={() => setShowPetGallery(false)}
         />
       )}
 

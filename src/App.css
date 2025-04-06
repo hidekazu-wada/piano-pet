@@ -54,6 +54,16 @@
   flex-wrap: wrap;
 }
 
+.gallery-button {
+  background-color: #2196f3;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+.gallery-button:hover {
+  background-color: #0b7dda;
+}
+
 .import-export-button {
   background-color: #4caf50;
   font-size: 0.8rem;
