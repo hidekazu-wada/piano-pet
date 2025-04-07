@@ -39,7 +39,7 @@ export const petLevels: PetLevelConfig[] = [
   {
     level: 5,
     imagePath: `${basePath}images/pets/pet-level-3.png`,
-    message: '可愛いリボンが付いたよ！お洒落になってきた♪'
+    message: 'ボクの大好きなホネホネおやつだ！練習を頑張ってくれてありがとう♪'
   },
   // 必要なだけレベル設定を追加する
 ];
