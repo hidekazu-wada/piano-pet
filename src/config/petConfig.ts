@@ -30,7 +30,6 @@ export const petLevels: PetLevelConfig[] = [
     imagePath: `${basePath}images/pets/pet-level-3.png`,
     message: 'わーい！帽子にポンポンがついたー！どんどん練習しよう♪'
   },
-  // レベル4と5はぞれぞれ対応する画像を使用
   {
     level: 4,
     imagePath: `${basePath}images/pets/pet-level-4.png`,
@@ -41,7 +40,11 @@ export const petLevels: PetLevelConfig[] = [
     imagePath: `${basePath}images/pets/pet-level-5.png`,
     message: 'ボクの大好きなホネホネおやつだ！練習を頑張ってくれてありがとう♪'
   },
-  // 必要なだけレベル設定を追加する
+  {
+    level: 6,
+    imagePath: `${basePath}images/pets/pet-level-6.png`,
+    message: 'みてみて！帽子と服が新しくなったよ！かっこいいでしょ？'
+  },
 ];
 
 // 指定されたレベルの設定を取得する関数
