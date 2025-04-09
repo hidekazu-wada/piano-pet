@@ -47,7 +47,7 @@ export const petLevels: PetLevelConfig[] = [
   },
   {
     level: 7,
-    imagePath: `${basePath}images/pets/pet-level-6.png`,
+    imagePath: `${basePath}images/pets/pet-level-7.png`,
     message: 'ついにボクもピアノをゲット！いっぱい練習するぞー！',
   },
 ];
