@@ -65,6 +65,11 @@ export const petLevels: PetLevelConfig[] = [
     imagePath: `${basePath}images/pets/pet-level-10.png`,
     message: 'うー、花粉症で鼻がムズムズするよー！キミは平気？',
   },
+  {
+    level: 11,
+    imagePath: `${basePath}images/pets/pet-level-11.png`,
+    message: '花粉症が治ったー！あれ？お花が咲いたよ！',
+  },
 ];
 
 // 指定されたレベルの設定を取得する関数
