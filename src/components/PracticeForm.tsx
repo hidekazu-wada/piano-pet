@@ -13,7 +13,7 @@ const PracticeForm: React.FC<PracticeFormProps> = ({ onStartPractice }) => {
   const predefinedPractices = [
     'ハノン',
     '老いぼれ猫の夢',
-    'メヌエット',
+    'ミュゼット',
     'アリエッタ',
     'ウィンナーワルツ'
   ]
