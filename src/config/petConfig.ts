@@ -53,7 +53,8 @@ export const petLevels: PetLevelConfig[] = [
   {
     level: 8,
     imagePath: `${basePath}images/pets/pet-level-8.png`,
-    message: 'いっぱいピアノを練習したら、モーツアルトみたいなアタマになっちゃった！',
+    message:
+      'いっぱいピアノを練習したら、モーツアルトみたいなアタマになっちゃった！',
   },
   {
     level: 9,
@@ -78,12 +79,38 @@ export const petLevels: PetLevelConfig[] = [
   {
     level: 13,
     imagePath: `${basePath}images/pets/pet-level-13.png`,
-    message: 'ピアノの練習を頑張ったら、ディズニーランドに連れてってもらえたよ！',
+    message:
+      'ピアノの練習を頑張ったら、ディズニーランドに連れてってもらえたよ！',
   },
   {
     level: 14,
     imagePath: `${basePath}images/pets/pet-level-14.png`,
     message: 'ディズニーランドに行ったら、これを食べなきゃね♪',
+  },
+  {
+    level: 15,
+    imagePath: `${basePath}images/pets/pet-level-15.png`,
+    message: 'ディズニランドでミッキーぽい服を買ってもらったよ！',
+  },
+  {
+    level: 16,
+    imagePath: `${basePath}images/pets/pet-level-16.png`,
+    message: 'わっしょいわっしょい！お祭りの衣装を着てみたよ！',
+  },
+  {
+    level: 17,
+    imagePath: `${basePath}images/pets/pet-level-17.png`,
+    message: 'わたがしポップコーンゲット！あまーい♪',
+  },
+  {
+    level: 18,
+    imagePath: `${basePath}images/pets/pet-level-18.png`,
+    message: '今日は野球を見に行くよ！ボクもユニフォームを着て応援するよ！',
+  },
+  {
+    level: 19,
+    imagePath: `${basePath}images/pets/pet-level-19.png`,
+    message: '今日はプールに遊びに来たよ！ボクは犬かきが得意だよ！',
   },
 ];
 
